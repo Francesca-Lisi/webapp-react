@@ -3,13 +3,13 @@ import Header from "../components/Header"
 
 const DefaultLayout = () => {
   return (
-    <div>
+    <>
       <Header />
 
-      <main className="container">
+      <main className="container my-4">
         <Outlet />
       </main>
-    </div>
+    </>
   )
 }
 
