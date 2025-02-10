@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import StarRating from "./StarRating";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ movieData }) => {
   const { id, title, director, genre, release_year, abstract, image, average_vote } = movieData;
@@ -13,9 +14,11 @@ const MovieCard = ({ movieData }) => {
           <p className="my-2 fw-medium">{genre}</p>
           <p>{abstract || ''}</p>
           <address><i>{director}</i></address>
-          {average_vote && <StarRating vote={average_vote} />}
 
-
+          <div className="d-flex justify-content-between align-items-center">
+            {average_vote && <StarRating vote={average_vote} />}
+            <Link to={`movies/${id}`} className="btn btn-outline-warning btn-sm">Vai alle Recensioni</Link>
+          </div>
         </div>
       </div>
     </div>

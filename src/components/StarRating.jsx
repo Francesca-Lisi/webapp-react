@@ -3,7 +3,6 @@
 const StarRating = ({ vote }) => {
   console.log(vote)
   const negativeValue = 100 - (vote * 2 * 10)
-  console.log('val', negativeValue)
   return (
     <div>
       <div className="position-relative star-bottom">
