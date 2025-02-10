@@ -3,3 +3,23 @@
   width: 100%;
   object-fit: cover;
 }
+
+.star-bottom {
+  width: fit-content;
+  z-index: 0;
+}
+
+.star-middle {
+  height: 100%;
+  background: white;
+  z-index: 50;
+
+}
+
+.star-top {
+  z-index: 100;
+}
+
+.bi-star {
+  color: rgba(255, 255, 255, 0)
+}
