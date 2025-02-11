@@ -6,7 +6,7 @@ const Header = () => {
     <header>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to='/'>My Movies</Link>
+          <Link className="navbar-brand fw-bolder fs-3 ps-3" to='/'>MyMovies</Link>
 
         </div>
       </nav>

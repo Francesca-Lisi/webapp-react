@@ -18,12 +18,15 @@ const GlobalProvider = ({ children }) => {
       .catch(err => console.log(err))
   }
 
-  const fetchMovie = (id) => {
+  const fetchMovie = (id, redirect) => {
     axios.get(`${api_url}/${id}`)
       .then(res => {
         setMovie(res.data)
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        if (err.status === 404) redirect()
+      })
   }
 
   const value = {
