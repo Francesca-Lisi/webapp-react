@@ -7,7 +7,7 @@ const GlobalProvider = ({ children }) => {
 
   const api_url = import.meta.env.VITE_API_URL;
   const [movies, setMovies] = useState([]);
-  const [movie, setMovie] = useState([])
+  const [movie, setMovie] = useState(null)
 
   const fetchMovies = () => {
     axios.get(api_url)
@@ -21,7 +21,7 @@ const GlobalProvider = ({ children }) => {
   const fetchMovie = (id) => {
     axios.get(`${api_url}/${id}`)
       .then(res => {
-        console.log(res.data);
+        setMovie(res.data)
       })
       .catch(err => console.log(err))
   }
