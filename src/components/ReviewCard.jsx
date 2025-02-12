@@ -3,8 +3,8 @@ import StarRating from "./StarRating"
 
 const ReviewCard = ({ review }) => {
   return (
-    <div className="card my-2">
-      <div className="card-header">
+    <div className="card my-3">
+      <div className="card-header fw-bold">
         - {review.name}
       </div>
       <div className="card-body">
