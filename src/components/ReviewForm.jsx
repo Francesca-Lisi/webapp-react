@@ -1,9 +1,13 @@
-import { useState } from "react"
+import { useState, } from "react";
+import { useNavigate } from "react-router-dom"
+import axios from "axios";
 
 
-const ReviewForm = ({ movie_id }) => {
+
+const ReviewForm = ({ movie_id, fetchData }) => {
 
   const api_url = `${import.meta.env.VITE_API_URL}/${movie_id}/reviews`;
+  const redirect = useNavigate();
 
   const initialFormData = {
     text: '',
@@ -13,10 +17,26 @@ const ReviewForm = ({ movie_id }) => {
 
   const [formData, setFormData] = useState(initialFormData)
 
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
     console.log(api_url)
+
+
+    axios.post(api_url, formData, { headers: { 'content-Type': 'application/json' } })
+      .then(res => {
+        console.log(res.data);
+        setFormData(initialFormData)
+        fetchData(movie_id, () => redirect('/404'))
+      })
+
+      .catch(err => {
+        console.log(err)
+      }
+      )
   }
 
   const setFieldValue = (e) => {

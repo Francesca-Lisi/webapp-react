@@ -49,7 +49,7 @@ const MoviePage = () => {
       </section>
 
       <section className="container">
-        <ReviewForm movie_id={movie?.id} />
+        <ReviewForm movie_id={movie?.id} fetchData={fetchMovie} />
       </section>
 
       <footer></footer>
