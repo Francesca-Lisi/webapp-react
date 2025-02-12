@@ -16,8 +16,15 @@ const ReviewForm = ({ movie_id, fetchData }) => {
   }
 
   const [formData, setFormData] = useState(initialFormData)
+  const [errorMessage, setErrorMessage] = useState('')
 
+  const validateForm = () => {
 
+    if (!formData.name || !formData.text) return false
+    if (isNaN(formData.vote) || formData.vote < 1 || formData.vote > 5) return false
+
+    return true
+  }
 
 
   const handleSubmit = (e) => {
@@ -25,11 +32,17 @@ const ReviewForm = ({ movie_id, fetchData }) => {
     console.log(formData)
     console.log(api_url)
 
+    if (!validateForm()) {
+      setErrorMessage('Attenzione, i dati inseriti non sono corretti')
+      return
+    }
+
 
     axios.post(api_url, formData, { headers: { 'content-Type': 'application/json' } })
       .then(res => {
         console.log(res.data);
         setFormData(initialFormData)
+        setErrorMessage('');
         fetchData(movie_id, () => redirect('/404'))
       })
 
@@ -54,6 +67,7 @@ const ReviewForm = ({ movie_id, fetchData }) => {
       </div>
 
       <div className="card-body">
+        <p className="text-danger">{errorMessage}</p>
         <form action="#" onSubmit={handleSubmit}>
           <div className="row row-cols-2 mb-2">
             <div className="form-group">
